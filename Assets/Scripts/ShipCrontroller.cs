@@ -49,7 +49,7 @@ public class ShipController : MonoBehaviour
         movement = movement.normalized * speed * Time.deltaTime;
 
         transform.Translate(movement);
-
+        updatehpslider();
         // Skjutakod
         shotTimer += Time.deltaTime;
 
@@ -74,7 +74,7 @@ public class ShipController : MonoBehaviour
             }
         }
     }
-    private void updatehpslider()
+    public void updatehpslider()
     {
         healtslider.maxValue = maxhp;
         healtslider.value = currenthp;

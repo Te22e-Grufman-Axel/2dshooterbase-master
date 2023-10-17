@@ -10,8 +10,8 @@ public class enemycontroller : MonoBehaviour
 GameObject Explosionprefab;
 [SerializeField]
 int currenthp;
-[SerializeField]
-void updatehpslider();
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +33,6 @@ void updatehpslider();
         {
             GameObject.Destroy(this.gameObject);
             currenthp -= 10;
-            updatehpslider();
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
