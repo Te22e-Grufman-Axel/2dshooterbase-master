@@ -9,7 +9,7 @@ public class ShipController : MonoBehaviour
 {
     [SerializeField]
     int maxhp = 100;
-    int currenthp;
+    public int currenthp;
 
 
 
@@ -41,7 +41,6 @@ public class ShipController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
 

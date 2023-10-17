@@ -8,12 +8,25 @@ public class Enemyspawncontroller : MonoBehaviour
 
     [SerializeField]
     GameObject EnemyPrefab;
+    [SerializeField]
+    GameObject Enemy2Prefab;
+    [SerializeField]
+    GameObject BossPrefab;
 
-float timer = 0;
+
+    float leveltimer = 0;
 
     [SerializeField]
-float timebetweenenemys = 1.5f;
+    float timebetweenlevels = 30;
 
+    float timer = 0;
+
+    [SerializeField]
+    float timebetweenenemys1 = 1.5f;
+    [SerializeField]
+    float timebetweenenemys2 = 3;
+    [SerializeField]
+    float timebetweenboss = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -25,13 +38,36 @@ float timebetweenenemys = 1.5f;
     void Update()
     {
 
-      timer += Time.deltaTime;
+        timer += Time.deltaTime;
+        leveltimer += Time.deltaTime;
 
-if (timer > timebetweenenemys)
-{
+        if (leveltimer < timebetweenlevels)
+        {
 
-        Instantiate(EnemyPrefab);
-        timer=0;
-}
+            if (timer > timebetweenenemys1)
+            {
+
+                Instantiate(EnemyPrefab);
+                timer = 0;
+            }
+        }
+        else if (leveltimer > timebetweenlevels && leveltimer < 2 * timebetweenlevels)
+        {
+            if (timer > timebetweenenemys2)
+            {
+
+                Instantiate(BossPrefab);
+                timer = 0;
+            }
+        }
+        else if (leveltimer > 2 * timebetweenlevels)
+        {
+            if (timer > timebetweenboss)
+            {
+
+                Instantiate(BossPrefab);
+                timer = 0;
+            }
+        }
     }
 }

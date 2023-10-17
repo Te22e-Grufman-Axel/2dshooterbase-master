@@ -8,6 +8,9 @@ public class enemycontroller : MonoBehaviour
 {
 [SerializeField]
 GameObject Explosionprefab;
+
+GameObject player;
+
 [SerializeField]
 int currenthp;
 
@@ -15,6 +18,8 @@ int currenthp;
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Ship");
+
         float x = Random.Range(-5f, 5f);
         Vector2 pos = new Vector2(x, Camera.main.orthographicSize + 1);
 
@@ -32,7 +37,9 @@ int currenthp;
         if (transform.position.y < -Camera.main.orthographicSize - 1)
         {
             GameObject.Destroy(this.gameObject);
-            currenthp -= 10;
+            player.GetComponent<ShipController>().currenthp -= 25;
+            player.GetComponent<ShipController>().updatehpslider();
+
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
