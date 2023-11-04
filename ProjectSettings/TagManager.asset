@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Enemy
   - Bullet
+  - Enemy2
+  - Boss
+  - "Vanlig hj\xE4rta"
+  - "Guldhj\xE4rta"
+  - Speedbost
   layers:
   - Default
   - TransparentFX

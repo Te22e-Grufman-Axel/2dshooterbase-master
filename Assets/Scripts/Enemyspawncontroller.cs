@@ -24,9 +24,9 @@ public class Enemyspawncontroller : MonoBehaviour
     [SerializeField]
     float timebetweenenemys1 = 1.5f;
     [SerializeField]
-    float timebetweenenemys2 = 3;
+    float timebetweenenemys2 = 5;
     [SerializeField]
-    float timebetweenboss = 10;
+    float timebetweenboss = 20;
 
     // Start is called before the first frame update
     void Start()
@@ -56,7 +56,7 @@ public class Enemyspawncontroller : MonoBehaviour
             if (timer > timebetweenenemys2)
             {
 
-                Instantiate(BossPrefab);
+                Instantiate(Enemy2Prefab);
                 timer = 0;
             }
         }

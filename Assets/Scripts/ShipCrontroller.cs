@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using System.Threading;
 
 public class ShipController : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class ShipController : MonoBehaviour
     int maxhp = 100;
     public int currenthp;
 
-
+    string Speedbost = "";
 
     [SerializeField]
     float speed = 5; // rutor per sekund
@@ -33,6 +34,8 @@ public class ShipController : MonoBehaviour
     [SerializeField]
     TMP_Text HealtText;
 
+    [SerializeField]
+    float speedtimmer = 0;
     private void Awake()
     {
         currenthp = maxhp;
@@ -41,6 +44,11 @@ public class ShipController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (currenthp <= 0)
+        {
+            SceneManager.LoadScene(2);
+        }
+
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
 
@@ -58,6 +66,24 @@ public class ShipController : MonoBehaviour
             shotTimer = 0;
 
         }
+
+
+        if (Speedbost == "True")
+        {
+            speedtimmer += Time.deltaTime;
+            if (speedtimmer <= 30)
+            {
+                speed = 15;
+            }
+            else if (speedtimmer > 30)
+            {
+                speed = 5;
+                speedtimmer = 0;
+                Speedbost = "false";
+            }
+
+        }
+
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -67,12 +93,55 @@ public class ShipController : MonoBehaviour
             updatehpslider();
 
 
-            if (currenthp <= 0)
+
+        }
+        else if (other.gameObject.tag == "Enemy2")
+        {
+            currenthp -= 20;
+            updatehpslider();
+
+
+
+        }
+        else if (other.gameObject.tag == "Boss")
+        {
+            currenthp -= 40;
+            updatehpslider();
+
+
+
+        }
+        else if (other.gameObject.tag == "Vanlig hjärta")
+        {
+            if (currenthp + 30 > maxhp)
             {
-                SceneManager.LoadScene(2);
+                currenthp = maxhp;
             }
+            else if (currenthp + 30 < maxhp)
+            {
+                currenthp = currenthp + 30;
+            }
+            updatehpslider();
+        }
+        else if (other.gameObject.tag == "Guldhjärta")
+        {
+            maxhp = maxhp + 30;
+            if (currenthp + 60 > maxhp)
+            {
+                currenthp = maxhp;
+            }
+            else if (currenthp + 60 < maxhp)
+            {
+                currenthp = currenthp + 60;
+            }
+            updatehpslider();
+        }
+        else if (other.gameObject.tag == "Speedbost")
+        {
+            Speedbost = "True";
         }
     }
+
     public void updatehpslider()
     {
         healtslider.maxValue = maxhp;

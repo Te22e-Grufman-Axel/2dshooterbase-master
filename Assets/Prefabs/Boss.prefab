@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 9203949037910836601}
   - component: {fileID: 40090269349873320}
   - component: {fileID: 2263379139775360844}
+  - component: {fileID: 3050867161413118274}
   m_Layer: 0
   m_Name: Boss
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,3 +121,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.56
+--- !u!114 &3050867161413118274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501065700656672276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd3ef6551efaa7a4eb8caec842d1d432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Explosionprefab: {fileID: 1052859802758272, guid: 7e5c5b1c1b18764459c69710c7dc4adc,
+    type: 3}

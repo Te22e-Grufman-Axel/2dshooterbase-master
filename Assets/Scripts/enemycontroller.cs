@@ -20,7 +20,7 @@ int currenthp;
     {
         player = GameObject.Find("Ship");
 
-        float x = Random.Range(-5f, 5f);
+        float x = Random.Range(-7f, 7f);
         Vector2 pos = new Vector2(x, Camera.main.orthographicSize + 1);
 
         transform.position = pos;
@@ -37,7 +37,7 @@ int currenthp;
         if (transform.position.y < -Camera.main.orthographicSize - 1)
         {
             GameObject.Destroy(this.gameObject);
-            player.GetComponent<ShipController>().currenthp -= 25;
+            player.GetComponent<ShipController>().currenthp -= 15;
             player.GetComponent<ShipController>().updatehpslider();
 
         }

@@ -23,9 +23,9 @@ public class BoltController : MonoBehaviour
 
   private void OnTriggerEnter2D(Collider2D other)
   {
-    Debug.Log(other.gameObject.tag);
 
-    if (other.gameObject.tag == "Enemy")
+
+    if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "Enemy2" || other.gameObject.tag == "Boss")
     {
       Destroy(this.gameObject);
     }
