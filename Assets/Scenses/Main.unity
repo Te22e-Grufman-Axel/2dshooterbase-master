@@ -1041,7 +1041,7 @@ MonoBehaviour:
   timebetweenlevels: 30
   timebetweenenemys1: 1.5
   timebetweenenemys2: 3
-  timebetweenboss: 10
+  timebetweenboss: 6
 --- !u!4 &1911697065
 Transform:
   m_ObjectHideFlags: 0

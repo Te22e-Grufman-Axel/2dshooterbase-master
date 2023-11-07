@@ -26,7 +26,7 @@ public class Enemyspawncontroller : MonoBehaviour
     [SerializeField]
     float timebetweenenemys2 = 5;
     [SerializeField]
-    float timebetweenboss = 20;
+    float timebetweenboss = 10;
 
 
 
@@ -68,7 +68,6 @@ public class Enemyspawncontroller : MonoBehaviour
         }
         else if (leveltimer > 4 * timebetweenlevels)
         {                      //så att den skapar en boss väldigt offta
-
             if (timer > timebetweenboss / 8)
             {
                 Instantiate(BossPrefab);
