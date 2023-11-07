@@ -15,7 +15,7 @@ public class ShipController : MonoBehaviour
     string Speedbost = "";
 
     [SerializeField]
-    float speed = 5; // rutor per sekund
+    float speed = 7.5f; // rutor per sekund
 
     [SerializeField]
     GameObject bulletPrefab;
@@ -46,21 +46,23 @@ public class ShipController : MonoBehaviour
     {
         if (currenthp <= 0)
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(2);             //om man dör så byts scenen
         }
 
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
 
-        Vector2 movement = new Vector2(moveX, moveY);
+        Vector2 movement = new Vector2(moveX, moveY);                     //rörelse
         movement = movement.normalized * speed * Time.deltaTime;
 
         transform.Translate(movement);
         updatehpslider();
-        // Skjutakod
+    
+
+
         shotTimer += Time.deltaTime;
 
-        if (Input.GetAxisRaw("Jump") > 0 && shotTimer > timeBetweenShots)
+        if (Input.GetAxisRaw("Jump") > 0 && shotTimer > timeBetweenShots)                           // Skjutakod
         {
             Instantiate(bulletPrefab, gunPosition.position, Quaternion.identity);
             shotTimer = 0;
@@ -73,11 +75,11 @@ public class ShipController : MonoBehaviour
             speedtimmer += Time.deltaTime;
             if (speedtimmer <= 30)
             {
-                speed = 15;
+                speed = 20;                           //speedbost kod
             }
             else if (speedtimmer > 30)
             {
-                speed = 5;
+                speed = 7.5f;
                 speedtimmer = 0;
                 Speedbost = "false";
             }
@@ -90,7 +92,7 @@ public class ShipController : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             currenthp -= 10;
-            updatehpslider();
+            updatehpslider();                             //om man kolideran med en level 1 fiende
 
 
 
@@ -98,14 +100,14 @@ public class ShipController : MonoBehaviour
         else if (other.gameObject.tag == "Enemy2")
         {
             currenthp -= 20;
-            updatehpslider();
+            updatehpslider();                            //om man kolideran med en level 2 fiende
 
 
 
         }
         else if (other.gameObject.tag == "Boss")
         {
-            currenthp -= 40;
+            currenthp -= 40;                            //om man kolideran med en boss
             updatehpslider();
 
 
@@ -117,7 +119,7 @@ public class ShipController : MonoBehaviour
             {
                 currenthp = maxhp;
             }
-            else if (currenthp + 30 < maxhp)
+            else if (currenthp + 30 < maxhp)                            //om man kolideran med en vanligt hjärta
             {
                 currenthp = currenthp + 30;
             }
@@ -130,13 +132,13 @@ public class ShipController : MonoBehaviour
             {
                 currenthp = maxhp;
             }
-            else if (currenthp + 60 < maxhp)
+            else if (currenthp + 60 < maxhp)                            //om man kolideran med en guld hjärta
             {
                 currenthp = currenthp + 60;
             }
             updatehpslider();
         }
-        else if (other.gameObject.tag == "Speedbost")
+        else if (other.gameObject.tag == "Speedbost")                            //om man kolideran med en speedbost
         {
             Speedbost = "True";
         }
@@ -144,7 +146,7 @@ public class ShipController : MonoBehaviour
 
     public void updatehpslider()
     {
-        healtslider.maxValue = maxhp;
+        healtslider.maxValue = maxhp;                   //kod för att uppdatera
         healtslider.value = currenthp;
 
         HealtText.text = currenthp + "/" + maxhp;

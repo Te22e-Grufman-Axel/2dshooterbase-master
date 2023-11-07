@@ -13,7 +13,7 @@ public class Powerupspawner : MonoBehaviour
     GameObject Speedbost;
 
 
-    int typavpowerup = 1;
+    int typavpowerup = 1;                           //variablar
 
     float timmer = 0;
     int timebetweenPowerups = 30;
@@ -21,17 +21,12 @@ public class Powerupspawner : MonoBehaviour
 
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
     {
         timmer += Time.deltaTime;
-        typavpowerup = Random.Range(1, 5);
+        typavpowerup = Random.Range(1, 4);
         if (timmer > timebetweenPowerups)
         {
 
@@ -40,7 +35,7 @@ public class Powerupspawner : MonoBehaviour
                 Instantiate(vanlighjärta);
                 timmer = 0;
             }
-            if (typavpowerup == 2)
+            if (typavpowerup == 2)                                    //så den väljer en random powerup och spawnar den
             {
                 Instantiate(guldhjärta);
                 timmer = 0;
@@ -50,14 +45,6 @@ public class Powerupspawner : MonoBehaviour
                 Instantiate(Speedbost);
                 timmer = 0;
             }
-            // if (typavpowerup == 4)
-            // {
-
-            // }
-            // if (typavpowerup == 5)
-            // {
-
-            // }
         }
     }
 }

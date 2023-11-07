@@ -11,7 +11,7 @@ public class vanlighjärtascript : MonoBehaviour
         player = GameObject.Find("Ship");
 
         float x = Random.Range(-7f, 7f);
-        Vector2 pos = new Vector2(x, Camera.main.orthographicSize + 2);
+        Vector2 pos = new Vector2(x, Camera.main.orthographicSize + 2);                      //vart den spawnar
 
         transform.position = pos;
     }
@@ -24,14 +24,14 @@ public class vanlighjärtascript : MonoBehaviour
 
         transform.Translate(movement);
 
-        if (transform.position.y < -Camera.main.orthographicSize - 2)
+        if (transform.position.y < -Camera.main.orthographicSize - 2)                                       //Rörelse och försviner om den åker utanför kartan
         {
             GameObject.Destroy(this.gameObject);
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")                 //försviner om den rör spelaren
         {
             Destroy(this.gameObject);
         }

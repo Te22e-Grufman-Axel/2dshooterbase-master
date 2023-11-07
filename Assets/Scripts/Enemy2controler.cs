@@ -19,7 +19,7 @@ public class Enemy2controler : MonoBehaviour
     {
         player = GameObject.Find("Ship");
 
-        float x = Random.Range(-10f, 10f);
+        float x = Random.Range(-10f, 10f);                                             //vart den spawnar
         Vector2 pos = new Vector2(x, Camera.main.orthographicSize + 2);
 
         transform.position = pos;
@@ -33,7 +33,7 @@ public class Enemy2controler : MonoBehaviour
 
         transform.Translate(movement);
 
-        if (transform.position.y < -Camera.main.orthographicSize - 1)
+        if (transform.position.y < -Camera.main.orthographicSize - 1)                                          //rörelse och så den försviner om den kommer igenm och du förlorar hå
         {
             GameObject.Destroy(this.gameObject);
             player.GetComponent<ShipController>().currenthp -= 25;
@@ -48,7 +48,7 @@ public class Enemy2controler : MonoBehaviour
             enemy2hp--;
             if (enemy2hp <= 0)
             {
-                Destroy(this.gameObject);
+                Destroy(this.gameObject);                                            //Så att den dör om man skuter den 2 gånger
                 GameObject explosion = Instantiate(Explosionprefab, transform.position, Quaternion.identity);
                 Destroy(explosion, 0.4f);
             }

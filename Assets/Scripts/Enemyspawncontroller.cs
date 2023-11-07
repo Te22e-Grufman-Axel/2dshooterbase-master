@@ -16,7 +16,7 @@ public class Enemyspawncontroller : MonoBehaviour
 
     float leveltimer = 0;
 
-    [SerializeField]
+    [SerializeField]                                   //variablar
     float timebetweenlevels = 30;
 
     float timer = 0;
@@ -28,11 +28,7 @@ public class Enemyspawncontroller : MonoBehaviour
     [SerializeField]
     float timebetweenboss = 20;
 
-    // Start is called before the first frame update
-    void Start()
-    {
 
-    }
 
     // Update is called once per frame
     void Update()
@@ -41,7 +37,7 @@ public class Enemyspawncontroller : MonoBehaviour
         timer += Time.deltaTime;
         leveltimer += Time.deltaTime;
 
-        if (leveltimer < timebetweenlevels)
+        if (leveltimer < timebetweenlevels)                      //om den ska skapa en level 1 fiende
         {
 
             if (timer > timebetweenenemys1)
@@ -56,7 +52,7 @@ public class Enemyspawncontroller : MonoBehaviour
             if (timer > timebetweenenemys2)
             {
 
-                Instantiate(Enemy2Prefab);
+                Instantiate(Enemy2Prefab);                                //om den ska skapa en level 2 fiende
                 timer = 0;
             }
         }
@@ -65,6 +61,16 @@ public class Enemyspawncontroller : MonoBehaviour
             if (timer > timebetweenboss)
             {
 
+                Instantiate(BossPrefab);                      //om den ska skapa en boss
+
+                timer = 0;
+            }
+        }
+        else if (leveltimer > 4 * timebetweenlevels)
+        {                      //så att den skapar en boss väldigt offta
+
+            if (timer > timebetweenboss / 8)
+            {
                 Instantiate(BossPrefab);
                 timer = 0;
             }

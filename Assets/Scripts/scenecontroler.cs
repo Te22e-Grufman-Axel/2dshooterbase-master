@@ -6,9 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class scenecontroler : MonoBehaviour
 {
- public void gotoscene(int scenenumber)
+ public void gotoscene(int scenenumber)                       //för att ändra scene
  {
     SceneManager.LoadScene(scenenumber);
-    Debug.Log("hey");
  }
 }

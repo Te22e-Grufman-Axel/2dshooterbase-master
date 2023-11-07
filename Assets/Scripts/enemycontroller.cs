@@ -21,7 +21,7 @@ int currenthp;
         player = GameObject.Find("Ship");
 
         float x = Random.Range(-7f, 7f);
-        Vector2 pos = new Vector2(x, Camera.main.orthographicSize + 1);
+        Vector2 pos = new Vector2(x, Camera.main.orthographicSize + 1);                        //vart den spawnar
 
         transform.position = pos;
     }
@@ -34,7 +34,7 @@ int currenthp;
 
         transform.Translate(movement);
 
-        if (transform.position.y < -Camera.main.orthographicSize - 1)
+        if (transform.position.y < -Camera.main.orthographicSize - 1)                          //Rörelse och så den försvinnar och du förlorar hp om den kommer igenom
         {
             GameObject.Destroy(this.gameObject);
             player.GetComponent<ShipController>().currenthp -= 15;
@@ -47,7 +47,7 @@ int currenthp;
         if (other.gameObject.tag == "Bullet" || other.gameObject.tag == "Player")
         {
             Destroy(this.gameObject);
-            GameObject explosion = Instantiate(Explosionprefab, transform.position, Quaternion.identity);
+            GameObject explosion = Instantiate(Explosionprefab, transform.position, Quaternion.identity);                                         //så den försviner om du skuter den
             Destroy (explosion, 0.4f);
         }
     }

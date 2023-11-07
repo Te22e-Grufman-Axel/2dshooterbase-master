@@ -11,7 +11,7 @@ public class BoltController : MonoBehaviour
   {
     float speed = 8;
 
-    Vector2 movement = new Vector2(0, speed) * Time.deltaTime;
+    Vector2 movement = new Vector2(0, speed) * Time.deltaTime;                       //Rörelse och försviner om den åker utanför kamran
 
     transform.Translate(movement);
 
@@ -27,7 +27,7 @@ public class BoltController : MonoBehaviour
 
     if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "Enemy2" || other.gameObject.tag == "Boss")
     {
-      Destroy(this.gameObject);
+      Destroy(this.gameObject);                     //försviner om den rör en fiende
     }
   }
 

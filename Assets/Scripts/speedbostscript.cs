@@ -10,7 +10,7 @@ public class speedbostscript : MonoBehaviour
     {
         player = GameObject.Find("Ship");
 
-        float x = Random.Range(-7f, 7f);
+        float x = Random.Range(-7f, 7f);                                                 //vart den spawnar
         Vector2 pos = new Vector2(x, Camera.main.orthographicSize + 2);
 
         transform.position = pos;
@@ -23,7 +23,7 @@ public class speedbostscript : MonoBehaviour
         Vector2 movement = new Vector2(0, speed) * Time.deltaTime * -1;
 
         transform.Translate(movement);
-
+                                                                                            //Rörelse och försviner om den åker utanför kartan
         if (transform.position.y < -Camera.main.orthographicSize - 2)
         {
             GameObject.Destroy(this.gameObject);
@@ -33,7 +33,7 @@ public class speedbostscript : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Destroy(this.gameObject);
+            Destroy(this.gameObject);                                     //försviner om den rör spelaren
         }
     }
 }

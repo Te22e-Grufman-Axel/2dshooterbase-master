@@ -11,7 +11,7 @@ public class guldhjärtascript : MonoBehaviour
         player = GameObject.Find("Ship");
 
         float x = Random.Range(-7f, 7f);
-        Vector2 pos = new Vector2(x, Camera.main.orthographicSize + 2);
+        Vector2 pos = new Vector2(x, Camera.main.orthographicSize + 2);                         //vart den spawnar
 
         transform.position = pos;
     }
@@ -24,14 +24,14 @@ public class guldhjärtascript : MonoBehaviour
 
         transform.Translate(movement);
 
-        if (transform.position.y < -Camera.main.orthographicSize - 2)
+        if (transform.position.y < -Camera.main.orthographicSize - 2)                                  //så den rör sig neråt och försviner om den kommer för långt ner
         {
             GameObject.Destroy(this.gameObject);
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")                 //så den försviner om den rör spelaren
         {
             Destroy(this.gameObject);
         }
