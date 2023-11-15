@@ -67,13 +67,7 @@ public class Enemyspawncontroller : MonoBehaviour
         }
         else if (leveltimer > 4 * timebetweenlevels)
         {                      //så att den skapar en boss väldigt offta
-            for (int i = 0; i < 20; i++)
-            {
                 Instantiate(BossPrefab);
-            }
-
-
-
         }
     }
 }
