@@ -57,7 +57,6 @@ public class ShipController : MonoBehaviour
 
         transform.Translate(movement);
         updatehpslider();
-    
 
 
         shotTimer += Time.deltaTime;
@@ -66,9 +65,7 @@ public class ShipController : MonoBehaviour
         {
             Instantiate(bulletPrefab, gunPosition.position, Quaternion.identity);
             shotTimer = 0;
-
         }
-
 
         if (Speedbost == "True")
         {
@@ -83,9 +80,7 @@ public class ShipController : MonoBehaviour
                 speedtimmer = 0;
                 Speedbost = "false";
             }
-
         }
-
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -93,25 +88,16 @@ public class ShipController : MonoBehaviour
         {
             currenthp -= 10;
             updatehpslider();                             //om man kolideran med en level 1 fiende
-
-
-
         }
         else if (other.gameObject.tag == "Enemy2")
         {
             currenthp -= 20;
             updatehpslider();                            //om man kolideran med en level 2 fiende
-
-
-
         }
         else if (other.gameObject.tag == "Boss")
         {
             currenthp -= 40;                            //om man kolideran med en boss
             updatehpslider();
-
-
-
         }
         else if (other.gameObject.tag == "Vanlig hjärta")
         {

@@ -29,7 +29,6 @@ public class Enemyspawncontroller : MonoBehaviour
     float timebetweenboss = 10;
 
 
-
     // Update is called once per frame
     void Update()
     {
@@ -56,7 +55,7 @@ public class Enemyspawncontroller : MonoBehaviour
                 timer = 0;
             }
         }
-        else if (leveltimer > 2 * timebetweenlevels)
+        else if (leveltimer > 2 * timebetweenlevels && leveltimer < 4* timebetweenlevels) 
         {
             if (timer > timebetweenboss)
             {
@@ -68,11 +67,13 @@ public class Enemyspawncontroller : MonoBehaviour
         }
         else if (leveltimer > 4 * timebetweenlevels)
         {                      //så att den skapar en boss väldigt offta
-            if (timer > timebetweenboss / 8)
+            for (int i = 0; i < 20; i++)
             {
                 Instantiate(BossPrefab);
-                timer = 0;
             }
+
+
+
         }
     }
 }

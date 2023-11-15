@@ -1,15 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-
 public class Bosscontroler : MonoBehaviour
 {
     GameObject player;
 
     [SerializeField]                            //variablar
     GameObject Explosionprefab;
-
 
     int bosshp = 3;
 
@@ -23,7 +20,6 @@ public class Bosscontroler : MonoBehaviour
 
         transform.position = pos;
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -37,7 +33,6 @@ public class Bosscontroler : MonoBehaviour
             GameObject.Destroy(this.gameObject);
             player.GetComponent<ShipController>().currenthp -= 50;
             player.GetComponent<ShipController>().updatehpslider();
-
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
